@@ -1,0 +1,13 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '3005:3005'
+    environment:
+      - MONGODB_URI=mongodb+srv://nayanajithishara2541:jZuY0drG4i25ukXo@cluster0.wf6p9so.mongodb.net/
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
