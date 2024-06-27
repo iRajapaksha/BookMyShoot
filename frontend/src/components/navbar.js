@@ -8,7 +8,7 @@ function NavBar() {
  
       <div className={styles.bookmyshoot}>BookMyShoot</div>
       <div className={styles.home}>
-        <Link to="/">My Home</Link>
+        <Link to="/">Home</Link>
       </div>
       <div className={styles.services}>
         <Link to="/events">Events</Link>
