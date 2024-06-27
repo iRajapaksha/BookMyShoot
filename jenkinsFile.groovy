@@ -16,6 +16,12 @@ triggers{
                 git branch: "${BRANCH}", url: "${REPO_URL}"
             }
         }
+        stage('Install Dependencies'){
+            steps{
+                echo 'Installing Dependencies...'
+
+            }
+        }
 
         stage('Build Docker Images') {
             steps {
