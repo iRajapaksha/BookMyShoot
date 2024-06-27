@@ -20,7 +20,7 @@ function NavBar() {
       </div>
       <div className={styles.contact}>
         <span>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact">Contact Us</Link>
         </span>
       </div>
       <div className={styles.login}>
