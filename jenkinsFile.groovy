@@ -8,8 +8,6 @@ triggers{
         BRANCH = 'main'
         DOCKER_REGISTRY = 'irajapaksha'
         APP_NAME = 'BookMyShoot'
-        DEPLOY_SERVER = '172.20.10.2'
-        SSH_CREDENTIALS_ID = 'your_ssh_credentials_id'
     }
 
     stages {
@@ -39,16 +37,8 @@ triggers{
 
         stage('Deploy Application') {
             steps {
-                sshagent (credentials: ['${SSH_CREDENTIALS_ID}']) {
-                    script {
-                        sh '''
-                        ssh -o StrictHostKeyChecking=no user@${DEPLOY_SERVER} <<EOF
-                        cd /path/to/deployment/folder
-                        docker-compose pull
-                        docker-compose up -d
-                        EOF
-                        '''
-                    }
+                script {
+                    sh 'docker-compose up -d'
                 }
             }
         }
