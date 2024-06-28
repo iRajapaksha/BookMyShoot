@@ -4,12 +4,11 @@ triggers{
     githubPush()
   }
     environment {
-        REPO_URL = 'https://github.com/iRajapaksha/BookMyShoot.git'
-        BRANCH = 'main'
-        DOCKER_REGISTRY = 'irajapaksha'
-        APP_NAME = 'BookMyShoot'
+        REPO_URL = 'https://github.com/SHASHI4368/DevOps-TMS'
+        BRANCH = 'master' 
+        APP_NAME = 'TMS'
         EC2_USER = 'ubuntu'
-        EC2_HOST = '172.31.45.108'
+        EC2_HOST = '16.171.194.50'
 
     }
 
@@ -19,8 +18,8 @@ triggers{
         steps {
         script {
             sh """
-            ssh -i ${EC2_USER}@${EC2_HOST} << EOF
-            cd ~/TMS 
+            ssh ${EC2_USER}@${EC2_HOST} << EOF
+            cd ~/TMS
             EOF
             """
         }
@@ -69,34 +68,3 @@ triggers{
 }
     }
 }
-
-
-
-// pipeline {
-//   agent any
-//   triggers{
-//     githubPush()
-//   }
-//   stages {
-//     stage('Stage 1'){
-//       steps {
-//         echo 'This is Stage 1'
-//       }
-//     }
-//     stage('Stage 2'){
-//       steps{
-//         echo 'This is Stage 2'
-//       }
-//     }
-//     stage('Final'){
-//       steps{
-//         echo 'this is Final Stage'
-//       }
-//     }
-//     stage('Deploy') {
-//             steps {
-//                 echo 'Deploying application...'
-//             }
-//         }
-//     }
-// }
