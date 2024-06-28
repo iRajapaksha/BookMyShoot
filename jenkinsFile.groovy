@@ -8,9 +8,6 @@ triggers{
         BRANCH = 'main'
         DOCKER_REGISTRY = 'irajapaksha'
         APP_NAME = 'BookMyShoot'
-        EC2_USER = 'ubuntu'
-        EC2_HOST = '172.31.45.108'
-
     }
 
     stages {
@@ -44,20 +41,14 @@ triggers{
             }
         }
 
-    stage('Deploy Application on EC2') {
-        steps {
-        script {
-            sh """
-            ssh -i ${EC2_USER}@${EC2_HOST} << EOF
-            cd ~/TMS
-            docker-compose down
-            docker-compose up -d
-            exit
-            EOF
-            """
+        stage('Deploy Application') {
+            steps {
+                script {
+                    sh 'docker-compose down'
+                    sh 'docker-compose up -d'
+                }
+            }
         }
-    }
-}
     }
 }
 
