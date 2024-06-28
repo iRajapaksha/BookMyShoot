@@ -23,7 +23,7 @@ const Profile = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileHeader}>
-        <h1>Profile</h1>
+        <h1>Photographer Profile</h1>
       </div>
       {isLoading ? (
         <div className={styles.loadingSpinner}></div>
