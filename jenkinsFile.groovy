@@ -14,6 +14,18 @@ triggers{
     }
 
     stages {
+
+        stage('Access the Deploy Server') {
+        steps {
+        script {
+            sh """
+            ssh -i ${EC2_USER}@${EC2_HOST} << EOF
+            cd ~/TMS 
+            EOF
+            """
+        }
+    }
+}
         stage('Clone Repository') {
             steps {
                 git branch: "${BRANCH}", url: "${REPO_URL}"
@@ -48,12 +60,9 @@ triggers{
         steps {
         script {
             sh """
-            ssh -i ${EC2_USER}@${EC2_HOST} << EOF
-            cd ~/TMS
             docker-compose down
             docker-compose up -d
             exit
-            EOF
             """
         }
     }
